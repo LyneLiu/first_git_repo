@@ -46,7 +46,7 @@ init(State = #server_state{port = Port})  ->
 accept(State = #server_state{loop = Loop,lsocket = LSocket})  ->
   proc_lib:spawn(?MODULE,accept_loop,[{self(),LSocket,Loop}]),
   State.
-
+%% 使用echo模块的loop函数实现对socket数据的管理
 accept_loop({Server,LSocket,{M,F}}) ->
   {ok,Socket} = gen_tcp:accept(LSocket),
   gen_server:cast(Server,{accepted,self()}),
