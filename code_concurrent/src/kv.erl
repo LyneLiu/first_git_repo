@@ -14,6 +14,7 @@
 -export([init/1,handle_call/3,handle_cast/2,terminate/2]).
 -behaviour(gen_server).
 
+%% Key_Value server exercise
 start() ->
   gen_server:start_link({local,kv},kv,arg1,[]).
 
